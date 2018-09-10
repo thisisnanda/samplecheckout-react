@@ -7,8 +7,9 @@ Please follow the below commands to run the app.
 
 Node version = 8.9.3
 
-1) grunt build
-2) npm run start
+1) npm install
+2) grunt build
+3) npm run start
 
 Go to :http://localhost:8000/checkout
 
