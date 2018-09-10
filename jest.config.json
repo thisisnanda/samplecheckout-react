@@ -1,0 +1,19 @@
+{
+    "modulePaths": [
+        "<rootDir>/public/js"
+    ],
+    "verbose": true,
+    "transform": {
+        "^.+\\.js?$": "<rootDir>/node_modules/babel-jest",
+        "^.+\\.es6?$": "<rootDir>/node_modules/babel-jest"
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "testPathIgnorePatterns": [
+        "/node_modules/"
+    ],
+    "moduleFileExtensions": [
+        "js",
+        "es6"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/enzyme-setup.js"
+}

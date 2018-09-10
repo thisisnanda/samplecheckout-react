@@ -1,0 +1,90 @@
+{
+
+
+    "express": {
+        "view cache": false,
+        "view engine": "js",
+        "views": "path:./.build/templates"
+    },
+
+
+
+    "view engines": {
+        "js": {
+            "module": "engine-munger",
+            "renderer": {
+                "method": "js",
+                "arguments": [
+                    { "cache": true },
+                    {
+                        "views": "config:express.views",
+                        "view engine": "config:express.view engine",
+                        "specialization": "config:specialization",
+                        "i18n": "config:i18n"
+                    }
+                ]
+            }
+        }
+    },
+
+
+
+    "i18n": {
+        "contentPath": "path:./locales",
+        "fallback": "en-US"
+    },
+
+
+    "specialization": {
+    },
+
+    "middleware": {
+        "appsec": {
+            "enabled": true,
+            "priority": 113,
+            "module": {
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csp": {
+                            "policy": {
+
+                            },
+                            "scriptNonce": true
+                        },
+                        "csrf": false,
+                        "hsts": {
+                            "maxAge": 31536000,
+                            "includeSubDomains": true,
+                            "preload": true
+                        },
+                        "xframe": "SAMEORIGIN",
+                        "xssProtection": true
+                    }
+                ]
+            }
+        },
+
+        "expressView": {
+            "priority": 100,
+            "enabled": true,
+            "module": {
+                "name": "engine-munger/lib/expressView"
+            }
+        },
+
+
+        "static": {
+            "module": {
+                "arguments": [ "path:./.build" ]
+            }
+        },
+
+        "router": {
+            "module": {
+                "arguments": [{ "directory": "path:./controllers" }]
+            }
+        }
+
+    }
+}
